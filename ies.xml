@@ -6,30 +6,171 @@
       <nombre>DISEÑO Y PROGRAMACION WEB</nombre>
       <mod1>
         <nombre>ANALISIS Y DISEÑO DE SISTEMAS WEB</nombre>
+        <periodos/>
       </mod1>
       <per1>
         <nombre>I</nombre>
+        <unidades_didacticas>
+          <per1>
+            <nombre>ANALISIS Y DISEÑO DE SISTEMAS</nombre>
+          </per1>
+          <per2>
+            <nombre>INTRODUCCIÓN DE BASES DE DATOS</nombre>
+          </per2>
+          <per3>
+            <nombre>FUNDAMENTOS DE PROGRAMACION</nombre>
+          </per3>
+          <per4>
+            <nombre>REDES E INTERNET</nombre>
+          </per4>
+          <per5>
+            <nombre>ARQUITECTTURA DE COMPUTADORAS</nombre>
+          </per5>
+          <per6>
+            <nombre>COMUNICACIÓN ORAL</nombre>
+          </per6>
+          <per7>
+            <nombre>APLICACIONES EN INTERNET</nombre>
+          </per7>
+        </unidades_didacticas>
       </per1>
       <per2>
         <nombre>II</nombre>
+        <unidades_didacticas>
+          <per1>
+            <nombre>INTERPRETACION Y PRODUCCION DE TEXTO</nombre>
+          </per1>
+          <per2>
+            <nombre>OFIMATICA</nombre>
+          </per2>
+          <per3>
+            <nombre>PROGRAMACION ORIENTADA A OBJETOS</nombre>
+          </per3>
+          <per4>
+            <nombre>METODOLOGIA DE DESARROLLO DE SOFTWARE</nombre>
+          </per4>
+          <per5>
+            <nombre>APLICACIONES SISTEMATIZADAS</nombre>
+          </per5>
+          <per6>
+            <nombre>ARQUITECTURA DE SERVIDORES WEB</nombre>
+          </per6>
+          <per7>
+            <nombre>TALLER DE BASE DE DATOS</nombre>
+          </per7>
+        </unidades_didacticas>
       </per2>
       <mod2>
         <nombre>DESARROLLO DE APLIACIONES WEB</nombre>
+        <periodos/>
       </mod2>
       <per1>
         <nombre>III</nombre>
+        <unidades_didacticas>
+          <per1>
+            <nombre>ADMINISTRACION DE BASE DE DATOS</nombre>
+          </per1>
+          <per2>
+            <nombre>PROGRAMACION DE APLICACIONES WEB</nombre>
+          </per2>
+          <per3>
+            <nombre>DISEÑO DE APLICACIONES WEB</nombre>
+          </per3>
+          <per4>
+            <nombre>GESTION DE PROYECTOS DE APLICACIONES WEB</nombre>
+          </per4>
+          <per5>
+            <nombre>GESTION DE BASES DE DATOS</nombre>
+          </per5>
+          <per6>
+            <nombre>GESTION DE SERVIDORES WEB</nombre>
+          </per6>
+          <per7>
+            <nombre>GESTION DE APLICACIONES WEB</nombre>
+          </per7>
+        </unidades_didacticas>
       </per1>
       <per2>
         <nombre>IV</nombre>
+        <unidades_didacticas>
+          <per1>
+            <nombre>PROGRAMACIONDE APLIACCIONES MOVILES</nombre>
+          </per1>
+          <per2>
+            <nombre>PROGRAMACION DE APLICACIONES MOVILES</nombre>
+          </per2>
+          <per3>
+            <nombre>GESTION DE PROYECTOS DE APLICACIONES MOVILES</nombre>
+          </per3>
+          <per4>
+            <nombre>GESTION DE BASES DE DATOS</nombre>
+          </per4>
+          <per5>
+            <nombre>GESTION DE SERVIDORES MOVILES</nombre>
+          </per5>
+          <per6>
+            <nombre>GESTION DE APLICACIONES MOVILES</nombre>
+          </per6>
+          <per7>
+            <nombre>GESTION DE APLICACIONES HIBRIDAS</nombre>
+          </per7>
+        </unidades_didacticas>
       </per2>
       <mod3>
         <nombre>DISEÑO DE SERVICIOS WEB</nombre>
+        <periodos/>
       </mod3>
       <per1>
         <nombre>V</nombre>
+        <unidades_didacticas>
+          <per1>
+            <nombre>DISEÑO DE APLICACIONES DE ESCRITORIO</nombre>
+          </per1>
+          <per2>
+            <nombre>PROGRAMACION DE APLICACIONES DE ESCRITORIO</nombre>
+          </per2>
+          <per3>
+            <nombre>GESTION DE PROYECTOS DE APLICACIONES DE ESCRITORIO</nombre>
+          </per3>
+          <per4>
+            <nombre>GESTION DE BASES DE DATOS</nombre>
+          </per4>
+          <per5>
+            <nombre>GESTION DE SERVIDORES DE ESCRITORIO</nombre>
+          </per5>
+          <per6>
+            <nombre>GESTION DE APLICACIONES DE ESCRITORIO</nombre>
+          </per6>
+          <per7>
+            <nombre>GESTION DE APLICACIONES HIBRIDAS</nombre>
+          </per7>
+        </unidades_didacticas>
       </per1>
       <per2>
         <nombre>VI</nombre>
+        <unidades_didacticas>
+          <per1>
+            <nombre>TALLER DE INTEGRACION I</nombre>
+          </per1>
+          <per2>
+            <nombre>TALLER DE INTEGRACION II</nombre>
+          </per2>
+          <per3>
+            <nombre>TALLER DE INTEGRACION III</nombre>
+          </per3>
+          <per4>
+            <nombre>TALLER DE INTEGRACION IV</nombre>
+          </per4>
+          <per5>
+            <nombre>TALLER DE INTEGRACION V</nombre>
+          </per5>
+          <per6>
+            <nombre>TALLER DE INTEGRACION VI</nombre>
+          </per6>
+          <per7>
+            <nombre>TALLER DE INTEGRACION VII</nombre>
+          </per7>
+        </unidades_didacticas>
       </per2>
     </pe1>
     <pe2>

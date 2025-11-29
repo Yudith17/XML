@@ -132,12 +132,14 @@ $xml->appendChild($et1);
             $num_mod->appendChild($nom_mod);
             $num_pe->appendChild($num_mod);
             $periodos = $xml->createElement("periodos");
+            $num_mod->appendChild($periodos); 
             foreach ($Modulo['periodos'] as $indice_periodo => $Periodo) {
                 $num_per = $xml->createElement("per".$indice_periodo+1);
                 $nom_per = $xml->createElement("nombre", $Periodo['nombre']);
                 $num_per->appendChild($nom_per);
                 $periodos->appendChild($num_per);
                 $uds = $xml->createElement("unidades_didacticas");
+                $num_per->appendChild($uds);
                 foreach ($Periodo['unidades_didacticas'] as $indice_ud => $Ud) {
                     $num_ud = $xml->createElement("per".$indice_ud+1);
                     $nom_ud = $xml->createElement("nombre", $Ud);
