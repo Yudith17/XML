@@ -105,7 +105,7 @@ $pe5['nombre'] = "Producción Agropecuaria";
 $pe5['modulos'] = [];
 
 
-$ies['programas_de_estudio'] = "IES PÚBLICO HUANTA";
+$ies['nombre'] = "IES PÚBLICO HUANTA";
 $ies['programas_estudio'] = array($pe1, $pe2, $pe3, $pe4, $pe5);
 
 
@@ -117,38 +117,38 @@ $et1 = $xml->createElement('ies');
 $xml->appendChild($et1);
 
 //------recorrer las carreras
-
     $nombre_ies = $xml->createElement("nombre", $ies['nombre']);
     $programas_ies = $xml->createElement("programas_estudio");
     $et1->appendChild($nombre_ies);
-    $et1->appendChild($programas_ies);
+    
     foreach ($ies ["programas_estudio"] as $indice => $PEs) {
         $num_pe = $xml->createElement("pe".$indice+1);
         $nombre_pe = $xml->createElement("nombre", $PEs['nombre']);
+        $num_pe->appendChild($nombre_pe);
+        $programas_ies->appendChild($num_pe);
         foreach ($PEs['modulos'] as $indice_modulo=> $Modulo) {
             $num_mod = $xml->createElement("mod".$indice_modulo+1);
             $nom_mod = $xml->createElement("nombre", $Modulo['nombre']);
-            $uds = $xml->createElement("unidades_didacticas");
-            foreach ($Modulo['periodos'] as $indice_periodo => $Perido) {
+            $num_mod->appendChild($nom_mod);
+            $num_pe->appendChild($num_mod);
+            $periodos = $xml->createElement("periodos");
+            foreach ($Modulo['periodos'] as $indice_periodo => $Periodo) {
                 $num_per = $xml->createElement("per".$indice_periodo+1);
                 $nom_per = $xml->createElement("nombre", $Periodo['nombre']);
-                foreach ($Periodo['unidades_didacticas']as $indice_ud => $Ud) {
+                $num_per->appendChild($nom_per);
+                $periodos->appendChild($num_per);
+                $uds = $xml->createElement("unidades_didacticas");
+                foreach ($Periodo['unidades_didacticas'] as $indice_ud => $Ud) {
                     $num_ud = $xml->createElement("per".$indice_ud+1);
                     $nom_ud = $xml->createElement("nombre", $Ud);
                     $num_ud->appendChild($nom_ud);
                     $uds->appendChild($num_ud);
                 }
-                $num_per->appendChild($nom_per);
-                $num_per->appendChild($uds);
                 $num_pe->appendChild($num_per);
-            }
-            $num_mod->appendChild($nom_mod);
-            $num_pe->appendChild($num_mod);
+            }  
         }
-        $num_pe->appendChild($nombre_pe);
-        $programas_ies->appendChild($num_pe);
+        $et1->appendChild($programas_ies);
     }
-    $et1->appendChild($ies);
 
 
 //-------crear archivo para ponerle nombre
