@@ -1,15 +1,15 @@
 <?php
 
-$conexion = new mysqli('localhost', 'root', '');
+$conexion = new mysqli('localhost', 'root', 'root');
 if ($conexion->connect_errno) {
     die("Fallo al conectar a MySQL: ". $conexion->connect_error);
 }
 
 // 1. Crear la BD si no existe
-$conexion->query("CREATE DATABASE IF NOT EXISTS ies_xml CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+$conexion->query("CREATE DATABASE IF NOT EXISTS ies1_xml CHARACTER SET utf8 COLLATE utf8_general_ci");
 
 // 2. Usar la BD
-$conexion->select_db("ies_xml");
+$conexion->select_db("ies1_xml");
 
 // 3. Crear tablas
 $conexion->query("
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS sigi_programas_estudio (
 $conexion->query("
 CREATE TABLE IF NOT EXISTS sigi_planes_estudio (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_programa_estudios INT,
+    id_programa_estudios INT NOT NULL,
     nombre VARCHAR(255),
     resolucion VARCHAR(255),
     fecha_registro DATETIME,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS sigi_planes_estudio (
 $conexion->query("
 CREATE TABLE IF NOT EXISTS sigi_modulo_formativo (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_plan INT,
+    id_plan INT NOT NULL,
     descripcion TEXT,
     nro_modulo VARCHAR(50),
     FOREIGN KEY(id_plan) REFERENCES sigi_planes_estudio(id)
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS sigi_modulo_formativo (
 $conexion->query("
 CREATE TABLE IF NOT EXISTS sigi_periodos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_modulo INT,
+    id_modulo INT NOT NULL,
     descripcion TEXT,
     FOREIGN KEY(id_modulo) REFERENCES sigi_modulo_formativo(id)
 )");
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS sigi_periodos (
 $conexion->query("
 CREATE TABLE IF NOT EXISTS sigi_unidades_didacticas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_periodo INT,
+    id_periodo INT NOT NULL,
     nombre VARCHAR(255),
     creditos_teorico INT,
     creditos_practico INT,
@@ -72,7 +72,7 @@ foreach ($xml as $i_pe => $pe) {
     echo 'Tipo: '.$pe->tipo.'<br>';
     echo 'Nombre: '.$pe->nombre.'<br>';
     $consulta = "INSERT INTO sigi_programas_estudio ( codigo, tipo, nombre) 
-        VALUES ('{$pe->codigo}', '{$pe->tipo}', '{$pe->nombre}')";
+        VALUES ('$pe->codigo', '$pe->tipo', '$pe->nombre')";
         $conexion->query($consulta);
         $id_programa_estudios = $conexion->insert_id;
   
@@ -82,20 +82,20 @@ foreach ($xml as $i_pe => $pe) {
         echo '--'.$plan->fecha_registro.'<br>';
 
         $consulta = "INSERT INTO sigi_planes_estudio (id_programa_estudios, nombre, resolucion, fecha_registro, perfil_egresado) 
-        VALUES ('$id_programa_estudios','{$plan->nombre}', '{$plan->resolucion}', '{$plan->fecha_registro}', '{$plan->perfil_egresado}')";
+        VALUES ('$id_programa_estudios','$plan->nombre', '$plan->resolucion', '$plan->fecha_registro', '$plan->perfil_egresado')";
         $conexion->query($consulta);
         $id_plan = $conexion->insert_id;
         foreach ($plan->modulos_formativos[0] as $id_mod => $modulo) {
             echo '---'. $modulo->descripcion.'<br>';
             echo '---'. $modulo->nro_modulo.'<br>';
-            $consulta = "INSERT INTO sigi_modulo_formativo (descripcion, nro_modulo) 
-            VALUES ('{$modulo->descripcion}', '{$modulo->nro_modulo}')";
+            $consulta = "INSERT INTO sigi_modulo_formativo (id_plan, descripcion, nro_modulo) 
+            VALUES ('$id_plan', '$modulo->descripcion', '$modulo->nro_modulo')";
             $conexion->query($consulta);
             $id_modulo = $conexion->insert_id;
             foreach ($modulo->periodos[0] as $id_per => $periodo) {
                 echo '---'. $periodo->descripcion.'<br>';
-                  $consulta = "INSERT INTO sigi_periodos (descripcion) 
-                  VALUES ('{$modulo->descripcion}')";
+                  $consulta = "INSERT INTO sigi_periodos (id_modulo, descripcion) 
+                  VALUES ('$id_modulo','$periodo->descripcion')";
                   $conexion->query($consulta);
                   $id_per = $conexion->insert_id;
                 foreach ($periodo->unidades_didacticas[0] as $id_ud => $ud) {
@@ -105,8 +105,8 @@ foreach ($xml as $i_pe => $pe) {
                     echo '---'. $ud->tipo.'<br>'; 
                     echo '---'. $ud->horas_semanal.'<br>'; 
                     echo '---'. $ud->horas_semestral.'<br>'; 
-                    $consulta = "INSERT INTO sigi_unidades_didacticas (nombre, creditos_teorico,creditos_practico,tipo,horas_semanal,horas_semestral) 
-                    VALUES ('{$ud->nombre}', '{$ud->creditos_teorico}', '{$ud->creditos_practico}', '{$ud->tipo}', '{$ud->horas_semanal}', '{$ud->horas_semestral}')";
+                    $consulta = "INSERT INTO sigi_unidades_didacticas (id_periodo,nombre, creditos_teorico,creditos_practico,tipo,horas_semanal,horas_semestral) 
+                    VALUES ('$id_per','$ud->nombre', '$ud->creditos_teorico', '$ud->creditos_practico', '$ud->tipo', '$ud->horas_semanal', '$ud->horas_semestral')";
                     $conexion->query($consulta);
                     $id_ud = $conexion->insert_id;
                 }
